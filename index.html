@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Documentacao tecnica</title>
+</head>
+
+<body>
+  <header id="main-header">
+    <nav id="navbar">
+      <h1>devSocial documentacao</h1>
+      <ul>
+        <li class="nav-link"><a href="#introduction">Introducao</a></li>
+        <li class="nav-link"><a href="#Articles">Articles</a> </li>
+        <li class="nav-link"><a href="#Comments">Comments</a></li>
+        <li class="nav-link"><a href="#Contacts">Contatcts</a></li>
+        <li class="nav-link"><a href="#social">Social</a></li>
+        <li class="nav-link"><a href="#Team">Team</a></li>
+        <li class="nav-link"><a href="#Topicos">Topicos</a></li>
+        <li class="nav-link"><a href="#contatos">Contatos</a></li>
+        <li class="nav-link"><a href="#mensagens">Mensagens</a></li>
+        <li class="nav-link"><a href="#usuarios">Usuario</a></li>
+        <li class="nav-link"><a href="#ferramentas">Ferramentas usadas</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-doc">
+    <section class="main-section" id="introduction">
+      <header>Introduction</header>
+      <article class="main-article">
+        <p>somos a devSocial XXXXXXXXXX</p>
+        <p>XXXXXXXXX</p>
+        <ul>
+          <p>XXXXXXXXX</p>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Articles">
+      <header>Articles Controller</header>
+      <article class="main-article">
+        <p>ArticleController é a classe principal neste pacote com os seguintes Métodos e endpoints:</p>
+        <ul>
+          
+          <u><hr>Método getAll: GET /articles</u>
+          <p>Este método retorna uma lista de todos os artigos. Ele realiza uma chamada ao método findAllValidArticles() do repositório de artigos (ArticleRepository) para recuperar os artigos e os retorna como resposta. Esse endpoint retorna uma lista de todos os artigos que são considerados válidos. São como pequenos textos sobre diferentes assuntos. </p>
+<u>
+    <hr>Método getOne:  GET /articles/{id}:
+</u>
+<p>Este método retorna um único artigo válido com base no ID fornecido. O ID do artigo por exemplo é passado assim:  <code>urldaApi/articles/1</code>: O método chama o método findArticleById(id) do repositório de artigos e retorna o artigo correspondente com o id 1.</p>
+<u>
+    <hr>Método getByViews: GET /articles/views/{limit}
+</u>
+<p>Com esse endpoint, você pode pedir à API para mostrar uma lista dos artigos mais populares, os artigos que mais foram vistos pelos usuarios. Você pode especificar quantos artigos deseja ver usando o parâmetro {limit}. por exemplo, se deseja ver apenas 3 artigos dos mais vistos o endpoint ficara assim: <code>urldaApi/articles/views/3</code></p>
+
+<u>
+    <hr>Método updateViews:  PATCH /articles/{id}:
+</u>
+<p>
+    Este método atualiza o número de visualizações de um artigo com base no ID fornecido. O ID do artigo é passado como um parâmetro de caminho na URL da requisição. por exemplo: <code>Patch urldaApi/articles/1</code> O método chama o método updateViews(id) do repositório de artigos para realizar a atualização do artigo com o id 1.
+</p>
+<u><hr>Método getByAuthor: GET /articles/author</u>
+<p>Este método retorna uma lista de artigos do autor com base nos parâmetros fornecidos. Os parâmetros uid, art e lim são passados como parâmetros de consulta na URL da requisição. O método chama o método findAllByAuthor(uid, articleId, limit) do repositório de artigos para recuperar os artigos correspondentes e os retorna como resposta</p>
+        </ul>
+      </article>
+    </section>
+
+    <section class="main-section" id="Comments">
+      <header>Comments Controller</header>
+      <article class="main-article">
+        <p>
+            CommentController é a classe principal neste pacote e possui os seguintes métodos e endpoints:</p>
+            <hr><u>Método getLast: GET /comments/last/{limite} </u>:
+            <p> Este método retorna uma lista dos últimos comentários com base no limite fornecido. se você quiser por exemplo pegar os 3 ultimos comentários, a requisição a api ficara assim: <code>urldaApi/comments/last/3</code>. O método chama o método findLastComments(limit) do repositório de comentários (CommentRepository) para recuperar os comentários correspondentes.</p>
+        
+          <hr><u>Método getAll: GET /comments/{idDoArtigo}</u>
+          <p>
+            Este método retorna uma lista de todos os comentários de um determinado artigo com base no ID fornecido. se você quiser por exemplo pegar todos os comentários do artigo do id 5, a requisição a api ficara assim: <code>urldaApi/comments/5</code>. O método chama o método findAllCommentByArticle(articleId) do repositório de comentários e retorna os comentários correspondentes. 
+          </p>
+
+          <hr><u>Método postComment: POST /comments</u>
+<p>Usando este endpoint, você pode enviar um novo comentário. O método chama o método save(comment) do repositório de comentários para salvar o novo comentário no banco de dados.  </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Contacts">
+      <header>Contacts Controller</header>
+      <article class="main-article">
+        <p>ContactController é a classe principal neste pacote e possui o seguinte método:</p>
+        <hr><u>Método saveContact: POST /contact</u>
+        <p>Este método permite salvar o formulário de contato do usuário. O método chama o método save(contact) do repositório de contatos (ContactRepository) para salvar o novo formulário de contato do usuário no banco de dados. </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="social">
+      <header>Social Controller</header>
+      <article class="main-article">
+        <p>YSocialController é a classe principal neste pacote e possui o seguinte endpoint:</p>
+        <u>Método getSocial: GET /users/social/{idDoUsuario} </u>
+        <p>Este método retorna uma lista das informações sociais de um usuário específico com base no ID do usuário fornecido. por exemplo, se você quiser pegar as informações do user com id 12, a requisição a api ficara assim: <code>urldaApi/users/social/12</code> A API irá retornar as informações sociais desse usuário.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Team">
+      <header>Team Controller</header>
+      <article class="main-article">
+        <p>TeamController é a classe principal neste pacote e possui os seguintes métodos e endpoints:</p>
+       <hr> <u>Método getUser: GET /users/{id}</u>
+        <p>Este método retorna as informações de um usuário específico com base no ID do usuário fornecido. O ID do usuário é passado como um parâmetro de caminho na URL da requisição. O método verifica se o registro com o ID fornecido existe no repositório de equipe (TeamRepository). Se o registro existir, as informações do usuário são retornadas. Caso contrário, será retornado null.</p>
+        
+       <hr><u>Método getAll: GET /users </u>
+       <p>Aqui, você pode obter uma lista de todos os usuários. É como ter uma lista de todas as pessoas da equipe. A API irá retornar uma lista com as informações de cada usuário.</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="Topicos">
+      <header>Topicos Controller</header>
+      <article class="main-article">
+        <p>topicosController é a classe principal neste pacote com os seguintes Métodos e endpoints:</p>
+    
+          
+          <u><hr>Método getAll: GET /topicos</u>
+          <p>Este método retorna uma lista de todos os topicos. Ele realiza uma chamada ao método findAllTopicos() do repositório de artigos (topicoRepository) para recuperar os artigos e os retorna como resposta. Esse endpoint retorna uma lista de todos os topicos. São como pequenos textos sobre diferentes assuntos. </p>
+<u>
+    <hr>Método getOne:  GET /articles/{id}:
+</u>
+<p>Este método retorna um único topico válido com base no ID fornecido. O ID do artigo por exemplo é passado assim:  <code>urldaApi/topicos/1</code>: O método chama o método findTopicosById(id) do repositório de artigos e retorna o artigo correspondente com o id 1.</p>
+<u>
+    <hr>Método getByViews: GET /topicos/views/{limit}
+</u>
+<p>Com esse endpoint, você pode pedir à API para mostrar uma lista dos topicos mais populares, os topicos que mais foram vistos pelos usuarios. Você pode especificar quantos topicos deseja ver usando o parâmetro {limit}. por exemplo, se deseja ver apenas 3 artigos dos mais vistos o endpoint ficara assim: <code>urldaApi/topicos/views/3</code></p>
+
+<u>
+    <hr>Método updateViews:  PATCH /topicos/{id}:
+</u>
+<p>
+    Este método atualiza o número de visualizações de um topico com base no ID fornecido. O ID do topico é passado como um parâmetro de caminho na URL da requisição. por exemplo: <code>Patch urldaApi/topico/1</code> O método chama o método updateViews(id) do repositório de topicos para realizar a atualização do artigo com o id 1.
+</p>
+      </article>
+    </section>
+
+    <section class="main-section" id="contatos">
+      <header>Contatos</header>
+      <article class="main-article">
+        <p>XXXXXX</p>
+        <u></u>
+        <p>   <code></code>   </p>
+        
+      </article>
+    </section>
+
+    <section class="main-section" id="mensagens">
+      <header>Mensagens</header>
+      <article class="main-article">
+        <p>XXXXXX</p>
+        <u></u>
+        <p>   <code></code>   </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="usuarios">
+      <header>Usuario</header>
+      <article class="main-article">
+        <p>XXXXXX</p>
+        <u></u>
+        <p>   <code></code>   </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="ferramentas">
+      <header>Ferramentas usadas</header>
+      <article class="main-article">
+        <p>XXXXXX</p>
+        <u></u>
+        <p>   <code></code>   </p>
+      </article>
+    </section>
+</body>
+
+</html>
