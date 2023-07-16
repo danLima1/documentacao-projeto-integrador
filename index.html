@@ -145,35 +145,116 @@
     <section class="main-section" id="contatos">
       <header>Contatos</header>
       <article class="main-article">
-        <p>XXXXXX</p>
-        <u></u>
-        <p>   <code></code>   </p>
-        
+        <p>ContatosController é a classe principal neste pacote com os seguintes Métodos e endpoints:</p></p>
+       <hr>  <u>GET /contatosadicionados/{uId}</u>
+        <p>Este endpoint retorna uma lista de contatos adicionados por um determinado usuário. Ela recebe um parâmetro de caminho chamado uId, que representa o ID do usuário. A função correspondente a esta rota chama o método listaCont do objeto contatosAdicionadosRepository, que retorna uma lista de contatos adicionados pelo usuário especificado.</p>
+        <code>GET urldaApi/contatosadicionados/1</code>
+<p>a api irá retornar o contato adicionado onde tem o id 1</p>
+
+<hr><u>GET /contatosadicionados/{uId1}/{uId2}</u>
+<p>Esta rota verifica se um determinado contato foi adicionado por um usuário. Ela recebe dois parâmetros de caminho: uId1 e uId2, que representam os IDs dos usuários. A função correspondente a esta rota chama o método existId do objeto contatosAdicionadosRepository, que verifica se o contato foi adicionado pelo usuário e retorna o objeto ContatosAdicionados correspondente, se existir. Exemplo:</p>
+<code>GET urldaApi/contatosadicionados/1/2</code>
+<p>a api irá responder se tem alguma relação entre o usuário de id 1 e 2</p>
+
+<hr><u> POST /contatosadicionados</u>
+<p>Esta rota permite adicionar um novo contato. Ela recebe os dados do contato no corpo da requisição. A função correspondente a esta rota chama o método save do objeto contatosAdicionadosRepository para salvar o novo contato no banco de dados e retorna o objeto ContatosAdicionados recém-adicionado. Exemplo:</p>
+<code>POST urldaApi/contatosadicionados
+
+    {
+      "userId1": 1,
+      "userId2": 2,
+      "status": "amigo"
+    }</code>
       </article>
     </section>
 
     <section class="main-section" id="mensagens">
-      <header>Mensagens</header>
+      <header>Mensagens Controller</header>
       <article class="main-article">
-        <p>XXXXXX</p>
-        <u></u>
-        <p>   <code></code>   </p>
+        <p>MensagensController é a classe principal neste pacote com os seguintes Métodos e endpoints:</p>
+       <h2></h2> <u>GET /mensagens/{uId1}/{uId2}</u>
+        <p>Este endpoint retorna todas as mensagens entre dois usuários específicos. Ela recebe dois parâmetros de caminho: uId1 e uId2, que representam os IDs dos usuários. A função correspondente a este endpoint chama o método conversa do objeto mensagensRepository, que retorna uma lista de mensagens entre os dois usuários. por exemplo, se você fizer esta requisição a api:<code>GET urldaApi/mensagens/1/2</code>   a api irá retornar todas as mensagens dosusuários com id 1 e 2</p>
+
+        <hr><u>GET /mensagens/{mens}/met/var/</u>
+<p>Este endpoint retorna todas as mensagens que contenham uma determinada palavra. Ela recebe um parâmetro de caminho chamado mens, que representa a palavra a ser pesquisada. A função correspondente a este endpoint chama o método sendPPalavra do objeto mensagensRepository, que retorna uma lista de mensagens que correspondem à palavra-chave. Por exemplo, se o usuário fizer uma pesquisa nas mensagens, a requisição a a api sera feita assim:</p>
+<code>GET urldaApi/mensagens/olá/met/var/</code>
+<p>a api irá retornar todas as mensagens que contem a palavra olá</p>
+
+<hr><u> GET /mensagens/{uId1}/{uId2}/nlidas</u>
+<p>Este endpoint retorna todas as mensagens não lidas entre dois usuários específicos. Ela recebe dois parâmetros de caminho: uId1 e uId2, que representam os IDs dos usuários. A função correspondente a este endpoint chama o método mensagNLida do objeto mensagensRepository, que retorna uma lista de mensagens não lidas entre os dois usuários. por exemplo, se você fizer esta requisição a api:</p>
+<code>GET urldaApi/mensagens/1/2/nlidas</code>
+<p>a api irá retornar todas as mensagens não lidas entre os usuários de id 1 e 2  </p>
+
+<hr><u>GET /mensagens/{mensId}</u>
+<p>Este endpoint retorna uma única mensagem com base em seu ID. Ela recebe um parâmetro de caminho chamado mensId, que representa o ID da mensagem desejada. A função correspondente a esta rota verifica se a mensagem com o ID fornecido existe no repositório e retorna a mensagem, caso exista. por exemplo, se você fizer esta requisição a api:</p>
+<code>GET urldaApi/mensagens/12</code>
+<p>a api irá retornar a mensagem com id 12</p>
+
+
+<hr><u>POST /mensagens</u>
+<p>Este endpoint permite criar uma nova mensagem. Ela recebe os dados da mensagem no corpo da requisição, usando o formato JSON. A função correspondente a esta rota chama o método save do objeto mensagensRepository para salvar a nova mensagem no banco de dados e retorna a mensagem recém-criada. exemplo:</p>
+<code>POST urldaApi/mensagens
+    {
+      "conteudo": "Olá, como você está?",
+      "remetente": "Ermenilda",
+      "destinatario": "Joca"
+    }</code>
+
+ <hr><u>PATCH /mensagens/{mensId}</u>
+ <p>Este endpoint permite atualizar uma mensagem existente. Ela recebe o ID da mensagem a ser atualizada no parâmetro de caminho mensId e os dados atualizados no corpo da requisição, usando o formato JSON. A função correspondente a esta rota chama o método patch do objeto mensagensRepository para atualizar a mensagem com os dados fornecidos e retorna a mensagem atualizada. Exemplo:</p>
+<code>PATCH /mensagens/12
+    {
+      "conteudo": "Estou bem, obrigado!",
+      "remetente": "Bob",
+      "destinatario": "Alice"
+    }</code>
+<p>a api irá atualizar o conteudo da mensagem</p>
       </article>
     </section>
 
     <section class="main-section" id="usuarios">
-      <header>Usuario</header>
+      <header>Usuario Controller</header>
       <article class="main-article">
-        <p>XXXXXX</p>
-        <u></u>
-        <p>   <code></code>   </p>
+        <p>UsuarioController é a classe principal neste pacote com os seguintes Métodos e endpoints:</p>
+        <hr><u>GET /usuarios/{uNom}</u>
+        <p> Este endpoint retorna uma lista de usuários com base em um nome de usuário específico. Ela recebe um parâmetro de caminho chamado uNom, que representa o nome de usuário a ser pesquisado. A função correspondente a esta rota chama o método listaPAdd do objeto usuarioRepository, que retorna uma lista de usuários que correspondem ao nome fornecido. exemplo:</p>
+        <code>GET urldaApi/usuarios/joca</code>
+        <p>a api irá retornar o usuário com o nome "Joca</p>
+
+<hr><u> GET /usuarios/{userId}/one</u>
+<p>Este endpoint retorna um único usuário com base em seu ID que é fornecido atraves do firebase . Ela recebe um parâmetro de caminho chamado userId, que representa o ID do usuário desejado. A função correspondente a esta rota chama o método sendUser do objeto usuarioRepository, que retorna o usuário com o ID fornecido. exemplo de requisição:</p>
+<code>GET /usuarios/12/one</code>
+<p>a api irá retornar o usuario com o id 12</p>
+
+<hr><u> POST /usuarios</u>
+<p>Este endpoint permite criar um novo usuário. Ela recebe os dados do usuário no corpo da requisição, usando o formato JSON. A função correspondente a esta rota chama o método save do objeto usuarioRepository para salvar o novo usuário no banco de dados e retorna o usuário recém-criado. exemplo:</p>
+<code>POST urldaApi/usuarios
+    {
+      "nome": "joca",
+      "idade": 30,
+      "email": "joao@example.com"
+    }</code>
+
+<hr><u> PATCH /usuarios/{userId}</u>
+<p>Este endpoint permite atualizar as informações de um usuário existente. Ela recebe o ID do usuário a ser atualizado no parâmetro de caminho userId e os dados atualizados no corpo da requisição, usando o formato JSON. A função correspondente a esta rota chama o método patch do objeto usuarioRepository para atualizar o usuário com os dados fornecidos e retorna o usuário atualizado. exemplo de requisição:</p>
+<code>PATCH urldaApi/usuarios/123
+    {
+      "nome": "joca Silva",
+      "idade": 35,
+      "email": "joao.silva@example.com"
+    }</code>
+
       </article>
     </section>
 
     <section class="main-section" id="ferramentas">
       <header>Ferramentas usadas</header>
       <article class="main-article">
-        <p>XXXXXX</p>
+        <p>@RestController: Essa anotação marca a classe como um controlador REST, indicando que ela responderá a requisições HTTP e retornará dados no formato apropriado.
+            @RequestMapping("/mensagens"): Essa anotação especifica o mapeamento de URL base para todas as rotas definidas dentro do controlador. Todas as rotas neste controlador começarão com /mensagens.
+            @CrossOrigin: Essa anotação permite solicitações de origens diferentes, permitindo acesso a partir de domínios externos.
+            Dependências
+            O controlador MensagensController depende de um objeto MensagensRepository para acessar os dados das mensagens. Essa dependência é injetada automaticamente usando a anotação @Autowired.</p>
         <u></u>
         <p>   <code></code>   </p>
       </article>
