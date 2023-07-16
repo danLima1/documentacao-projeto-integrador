@@ -250,13 +250,21 @@
     <section class="main-section" id="ferramentas">
       <header>Ferramentas usadas</header>
       <article class="main-article">
-        <p>@RestController: Essa anotação marca a classe como um controlador REST, indicando que ela responderá a requisições HTTP e retornará dados no formato apropriado.
-            @RequestMapping("/mensagens"): Essa anotação especifica o mapeamento de URL base para todas as rotas definidas dentro do controlador. Todas as rotas neste controlador começarão com /mensagens.
-            @CrossOrigin: Essa anotação permite solicitações de origens diferentes, permitindo acesso a partir de domínios externos.
-            Dependências
-            O controlador MensagensController depende de um objeto MensagensRepository para acessar os dados das mensagens. Essa dependência é injetada automaticamente usando a anotação @Autowired.</p>
-        <u></u>
-        <p>   <code></code>   </p>
+        <ul>
+            <u>Framework</u>
+            <li>Spring-boot</li>
+            <hr><u>annotations</u>
+            <li>@RestController: Essa anotação marca a classe como um controlador REST, indicando que ela responderá a requisições HTTP e retornará dados no formato apropriado.</li>
+           <li> @RequestMapping("/{rota}"): Essa anotação especifica o mapeamento de URL base para todas as rotas definidas dentro do controlador. Todas as rotas em cada controlador começarão com /{rota}.</li>
+           <li> @CrossOrigin: Essa anotação permite solicitações de origens diferentes, permitindo acesso a partir de domínios externos.</li>
+            <hr>    <u>Dependências</u>
+        <li>spring-boot-starter-data-jpa: Dependência para o Spring Data JPA, que facilita a interação com o banco de dados por meio de objetos Java.</li>
+        <li>spring-boot-starter-web: Dependência para o Spring Web, que fornece recursos para criar aplicativos web RESTful.</li>
+        <li>h2: Dependência para o H2 Database, um banco de dados em memória usado para desenvolvimento e teste.</li>
+        <li>lombok: Dependência opcional para o Lombok, uma biblioteca que ajuda a reduzir a quantidade de código Java repetitivo.</li>
+        <li>spring-boot-starter-test: Dependência para o Spring Boot Test, que fornece suporte para escrever testes no projeto.</li>
+        <li>jackson-databind: Dependência para o Jackson Databind, uma biblioteca para trabalhar com JSON em Java.</li>
+        </ul>
       </article>
     </section>
 </body>
